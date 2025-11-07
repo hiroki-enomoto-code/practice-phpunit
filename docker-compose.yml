@@ -25,7 +25,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./htdocs:/var/www/html
+      - ./app:/var/www/html
       - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
       - ./docker/apache/000-default.conf:/etc/apache2/sites-available/000-default.conf
     networks:
