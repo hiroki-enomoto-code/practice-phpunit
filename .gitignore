@@ -1,0 +1,21 @@
+# Laravel
+/application/vendor/
+/application/node_modules/
+/application/public/hot
+/application/public/storage
+/application/storage/*.key
+/application/.env
+/application/.env.backup
+/application/.env.production
+/application/.phpunit.result.cache
+/application/Homestead.json
+/application/Homestead.yaml
+/application/auth.json
+/application/npm-debug.log
+/application/yarn-error.log
+/application/.fleet
+/application/.idea
+/application/.vscode
+
+# Docker
+/src/.DS_Store
