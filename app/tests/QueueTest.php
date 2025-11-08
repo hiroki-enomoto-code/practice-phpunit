@@ -44,4 +44,11 @@ final class QueueTest extends TestCase
         $this->assertSame('item1', $this->queue->pop());
         $this->assertSame('item2', $this->queue->pop());
     }
+
+    public function test_空の配列から要素を取り出そうとすると例外が発生すること(): void
+    {
+        $this->expectException(UnderflowException::class);
+        $this->expectExceptionMessage('Queue is empty');
+        $this->queue->pop();
+    }
 }
