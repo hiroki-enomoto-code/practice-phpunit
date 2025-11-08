@@ -2,31 +2,38 @@
 
 declare(strict_types=1);
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\Depends;
 
 use Queue;
 
 final class QueueTest extends TestCase
 {
-    public function test_配列は空である(): Queue
+    private Queue $queue;
+
+    protected function setUp(): void
     {
-        $queue = new Queue();
-        $this->assertSame(0, $queue->getSize());
-        return $queue;
+        $this->queue = new Queue();
     }
 
-    #[Depends('test_配列は空である')]
-    public function test_配列に要素を追加できること(Queue $queue): Queue
+    protected function tearDown(): void
     {
-        $queue->push('item1');
-        $this->assertSame(1, $queue->getSize());
-        return $queue;
+        unset($this->queue);
     }
 
-    #[Depends('test_配列に要素を追加できること')]
-    public function test_配列から要素を取り出せること(Queue $queue): void
+    public function test_配列は空である(): void
     {
-        $this->assertSame('item1', $queue->pop());
-        $this->assertSame(0, $queue->getSize());
+        $this->assertSame(0, $this->queue->getSize());
+    }
+
+    public function test_配列に要素を追加できること(): void
+    {
+        $this->queue->push('item1');
+        $this->assertSame(1, $this->queue->getSize());
+    }
+
+    public function test_配列から要素を取り出せること(): void
+    {
+        $this->queue->push('item1');
+        $this->assertSame('item1', $this->queue->pop());
+        $this->assertSame(0, $this->queue->getSize());
     }
 }
