@@ -36,4 +36,12 @@ final class QueueTest extends TestCase
         $this->assertSame('item1', $this->queue->pop());
         $this->assertSame(0, $this->queue->getSize());
     }
+
+    public function test_配列から要素を取り出す際に先頭から取り出されること(): void
+    {
+        $this->queue->push('item1');
+        $this->queue->push('item2');
+        $this->assertSame('item1', $this->queue->pop());
+        $this->assertSame('item2', $this->queue->pop());
+    }
 }
