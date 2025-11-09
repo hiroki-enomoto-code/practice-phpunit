@@ -1,2 +1,2 @@
 app/vendor
-docker/musql/mysqldata
+docker/mysql/mysqldata
